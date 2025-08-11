@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+        // 세일 정보 UI 업데이트
+        function updateSaleDisplay(<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1429,7 +1430,11 @@
                     </div>
                     <div class="contract-item">
                         <span class="contract-label">Sale Contract:</span>
-                        <span class="contract-address" onclick="copyToClipboard('0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1')">0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1</span>
+                        <span class="contract-address" onclick="copyToClipboard('0xa02F867520A75D60Ee268270ABCF3f4fB9b70B74')">0xa02F867520A75D60Ee268270ABCF3f4fB9b70B74</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-label">Sale End Time (Contract):</span>
+                        <span class="contract-address" id="contractEndTime" style="background: rgba(0, 232, 150, 0.1); color: var(--secondary); cursor: default;">Loading...</span>
                     </div>
                 </div>
 
@@ -1636,7 +1641,7 @@
         const WETO_CONFIG = {
             // 실제 배포된 컨트랙트 주소들
             tokenAddress: '0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b',
-            saleAddress: '0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1',
+            saleAddress: '0xa02F867520A75D60Ee268270ABCF3f4fB9b70B74',
             
             // BSC 테스트넷 설정
             chainId: '0x61', // BSC Testnet Chain ID
@@ -1651,7 +1656,7 @@
             
             // 세일 설정
             tokenPrice: 1000, // 1 BNB = 1000 WETO
-            presaleEnd: new Date('2025-08-31T23:59:59Z'),
+            presaleEnd: new Date('2025-09-30T23:59:59Z'), // 2025년 9월 30일 자정 종료
             maxTokensForSale: 100000000, // 1억 토큰
         };
 
@@ -1796,6 +1801,41 @@
             const totalRaisedEther = parseFloat(ethers.utils.formatEther(saleInfo.totalRaised));
             const hardCapEther = parseFloat(ethers.utils.formatEther(saleInfo.hardCap));
             
+            // 실제 컨트랙트 종료 시간 표시
+            const contractEndTime = document.getElementById('contractEndTime');
+            if (contractEndTime && saleInfo.saleEndTime) {
+                const endTimeMs = saleInfo.saleEndTime.toNumber() * 1000;
+                const endDate = new Date(endTimeMs);
+                const now = new Date();
+                
+                const formatOptions = {
+                    year: 'numeric',
+                    month: '2-digit', 
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                };
+                
+                const formattedDate = endDate.toLocaleString('ko-KR', formatOptions);
+                const isExpired = now > endDate;
+                
+                contractEndTime.innerHTML = `
+                    ${formattedDate}<br>
+                    <small style="color: ${isExpired ? 'var(--error)' : 'var(--success)'};">
+                        ${isExpired ? '⚠️ 세일 종료됨' : '✅ 세일 진행중'}
+                    </small>
+                `;
+                
+                // 콘솔에 디버깅 정보 출력
+                console.log('=== 컨트랙트 세일 정보 ===');
+                console.log('현재 시간:', now.toISOString());
+                console.log('세일 종료시간:', endDate.toISOString());
+                console.log('세일 활성 상태:', saleInfo.saleActive);
+                console.log('세일 만료 여부:', isExpired);
+                console.log('시간 차이(분):', Math.round((endDate - now) / (1000 * 60)));
+            }
+            
             // 토큰 가격 업데이트
             const wetoPerBnbElement = document.getElementById('wetoPerBnb');
             if (wetoPerBnbElement) {
@@ -1818,6 +1858,13 @@
             
             if (progressStats) {
                 progressStats.textContent = `${totalSoldEther.toLocaleString()} / ${hardCapEther.toLocaleString()}`;
+            }
+            
+            // 세일 상태에 따른 UI 업데이트
+            const hero = document.querySelector('.hero');
+            if (!saleInfo.saleActive) {
+                hero.style.filter = 'grayscale(50%)';
+                showToast('⚠️ 세일이 종료되었거나 비활성 상태입니다!', 'warning');
             }
         }
 
