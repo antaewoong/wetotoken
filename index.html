@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WETO Token - Simple Sale</title>
+    <title>WETO Token - Testnet Pre-Sale</title>
     
     <!-- SEO -->
-    <meta name="description" content="Simple WETO Token Sale on BSC Testnet - Buy and get tokens instantly!">
+    <meta name="description" content="Join the WETO Token Pre-Sale on BSC Testnet. Premium blockchain ecosystem with revolutionary MyMoment integration.">
     <meta name="keywords" content="WETO, Token, Cryptocurrency, Blockchain, DeFi, Pre-Sale, Testnet">
     
     <!-- Fonts -->
@@ -15,374 +15,1240 @@
     
     <style>
         :root {
+            /* Premium Color System */
             --primary: #0066FF;
+            --primary-light: #338BFF;
+            --primary-dark: #0052CC;
             --secondary: #00E896;
             --accent: #FF6B35;
             --warning: #FFB800;
             --success: #00C896;
             --error: #FF4757;
+            
+            /* Neutral Palette */
             --neutral-0: #FFFFFF;
+            --neutral-50: #F8FAFC;
             --neutral-100: #F1F5F9;
             --neutral-200: #E2E8F0;
             --neutral-300: #CBD5E1;
+            --neutral-400: #94A3B8;
+            --neutral-500: #64748B;
             --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1E293B;
             --neutral-900: #0F172A;
+            --neutral-950: #020617;
+            
+            /* Surface Colors */
+            --surface-primary: #FFFFFF;
+            --surface-secondary: var(--neutral-50);
+            --surface-tertiary: var(--neutral-100);
+            --surface-inverse: var(--neutral-900);
+            --surface-overlay: rgba(15, 23, 42, 0.8);
+            
+            /* Text Colors */
             --text-primary: var(--neutral-900);
             --text-secondary: var(--neutral-600);
+            --text-tertiary: var(--neutral-500);
+            --text-inverse: var(--neutral-0);
+            --text-accent: var(--primary);
+            
+            /* Gradients */
             --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00E896 100%);
             --gradient-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+            --gradient-border: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 232, 150, 0.2) 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-premium: 0 32px 64px -12px rgba(0, 102, 255, 0.15);
+            --shadow-glow: 0 0 32px rgba(0, 102, 255, 0.3);
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
+            --radius-2xl: 32px;
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
             --space-lg: 24px;
             --space-xl: 32px;
             --space-2xl: 48px;
             --space-3xl: 64px;
+            
+            /* Typography */
+            --font-size-xs: 12px;
             --font-size-sm: 14px;
             --font-size-md: 16px;
             --font-size-lg: 18px;
+            --font-size-xl: 20px;
             --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
             --font-size-4xl: 36px;
+            --font-size-5xl: 48px;
+            --font-size-6xl: 60px;
+            
+            /* Line Heights */
+            --leading-tight: 1.25;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.625;
         }
 
+        /* Dark Theme */
         [data-theme="dark"] {
-            --neutral-0: var(--neutral-900);
-            --neutral-100: #1E293B;
-            --neutral-200: #334155;
-            --text-primary: #FFFFFF;
-            --text-secondary: #CBD5E1;
+            --surface-primary: var(--neutral-900);
+            --surface-secondary: var(--neutral-800);
+            --surface-tertiary: var(--neutral-700);
+            --surface-inverse: var(--neutral-0);
+            --surface-overlay: rgba(248, 250, 252, 0.1);
+            
+            --text-primary: var(--neutral-0);
+            --text-secondary: var(--neutral-300);
+            --text-tertiary: var(--neutral-400);
+            --text-inverse: var(--neutral-900);
+            
             --gradient-surface: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--neutral-0);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-size: var(--font-size-md);
+            line-height: var(--leading-normal);
             color: var(--text-primary);
-            line-height: 1.6;
+            background: var(--surface-primary);
             min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-xl);
+        /* Testnet Badge */
+        .testnet-badge {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #FFB800 0%, #FF6B35 100%);
+            color: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: 700;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+            animation: pulse 2s ease-in-out infinite;
         }
 
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            background: var(--gradient-surface);
+        }
+
+        /* Header */
         .header {
-            text-align: center;
-            margin-bottom: var(--space-3xl);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .header {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: var(--space-lg);
+            gap: var(--space-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 800;
+            font-size: var(--font-size-2xl);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
             text-decoration: none;
             color: var(--text-primary);
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: var(--gradient-primary);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 900;
-            font-size: 24px;
-        }
-
-        .title {
-            font-size: var(--font-size-4xl);
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: var(--space-lg);
-        }
-
-        .subtitle {
             font-size: var(--font-size-lg);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            animation: logoRotate 8s ease-in-out infinite;
         }
 
-        .badge {
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: logoShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes logoShimmer {
+            0%, 100% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes logoRotate {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+                box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+            }
+            25% { 
+                transform: rotate(5deg) scale(1.05);
+                box-shadow: 0 0 30px rgba(0, 232, 150, 0.4);
+            }
+            50% { 
+                transform: rotate(0deg) scale(1.1);
+                box-shadow: 0 0 40px rgba(0, 102, 255, 0.5);
+            }
+            75% { 
+                transform: rotate(-5deg) scale(1.05);
+                box-shadow: 0 0 30px rgba(0, 232, 150, 0.4);
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-accent);
+            background: var(--gradient-glass);
+            text-decoration: none;
+        }
+
+        .wallet-btn {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            color: white;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .wallet-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .wallet-btn.connected {
+            background: var(--gradient-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--neutral-200);
+        }
+
+        [data-theme="dark"] .wallet-btn.connected {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        .main {
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--space-3xl) 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 232, 150, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+            text-align: center;
+        }
+
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(255, 184, 0, 0.1);
-            border: 1px solid rgba(255, 184, 0, 0.3);
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             border-radius: 999px;
+            color: var(--text-accent);
             font-size: var(--font-size-sm);
             font-weight: 600;
-            color: var(--warning);
             margin-bottom: var(--space-xl);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background: var(--warning);
+            background: var(--secondary);
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: pulseColor 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        @keyframes pulseColor {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-xl);
-            margin-bottom: var(--space-3xl);
+        .hero-title {
+            font-size: clamp(var(--font-size-4xl), 8vw, var(--font-size-6xl));
+            font-weight: 800;
+            line-height: var(--leading-tight);
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeIn 0.5s ease;
         }
 
-        .card {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            line-height: var(--leading-relaxed);
+            max-width: 640px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        /* Contract Info */
+        .contract-info {
             background: var(--gradient-surface);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-lg);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .card h2 {
-            font-size: var(--font-size-2xl);
-            font-weight: 700;
-            margin-bottom: var(--space-lg);
-            color: var(--text-primary);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-lg);
-            margin-bottom: var(--space-lg);
-        }
-
-        .stat {
-            text-align: center;
-            padding: var(--space-lg);
-            background: rgba(0, 102, 255, 0.05);
             border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-xl) auto;
+            max-width: 600px;
+            box-shadow: var(--shadow-md);
         }
 
-        .stat-value {
-            font-size: var(--font-size-2xl);
-            font-weight: 800;
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            display: block;
-            margin-bottom: 4px;
+        [data-theme="dark"] .contract-info {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
-        .stat-label {
+        .contract-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .contract-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contract-label {
             font-size: var(--font-size-sm);
+            font-weight: 600;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .contract-address {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-sm);
+            color: var(--text-accent);
+            background: rgba(0, 102, 255, 0.1);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            word-break: break-all;
+        }
+
+        .contract-address:hover {
+            background: rgba(0, 102, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            max-width: 960px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .stat-card {
+            background: var(--gradient-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .stat-card {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--text-accent);
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card:hover .stat-value {
+            animation: numberPulse 0.6s ease;
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            max-width: 600px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .countdown-item {
+            background: var(--gradient-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+        }
+
+        [data-theme="dark"] .countdown-item {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .countdown-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--text-accent);
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .countdown-label {
+            font-size: var(--font-size-xs);
+            color: var(--text-tertiary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: var(--gradient-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin: var(--space-3xl) auto;
+            max-width: 800px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .progress-section {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .progress-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .progress-stats {
+            font-size: var(--font-size-md);
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        .progress-bar-container {
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: var(--radius-md);
+            height: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: var(--space-lg);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            width: 0%;
+            position: relative;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShimmer 2s ease-in-out infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes progressShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-percentage {
+            text-align: center;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--text-accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* User Info Section */
+        .user-info-section {
+            background: var(--gradient-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin: var(--space-2xl) auto;
+            max-width: 800px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .user-info-section {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .user-stat-card {
+            background: var(--surface-secondary);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .user-stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .user-stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            color: var(--text-accent);
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .user-stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            align-items: center;
+            margin: var(--space-3xl) 0;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg) var(--space-2xl);
+            color: white;
+            font-weight: 600;
+            font-size: var(--font-size-md);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-surface);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg) var(--space-2xl);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: var(--font-size-md);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        [data-theme="dark"] .btn-secondary {
+            background: var(--gradient-glass);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--surface-overlay);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--surface-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2xl);
+            width: 90vw;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: modalSlideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--neutral-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        [data-theme="dark"] .modal-header {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .close-btn:hover {
+            background: var(--neutral-100);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-body {
+            padding: var(--space-xl);
+        }
+
+        /* Form Styles */
         .form-group {
             margin-bottom: var(--space-lg);
         }
 
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: var(--space-sm);
             font-weight: 600;
+            font-size: var(--font-size-sm);
             color: var(--text-secondary);
         }
 
         .input-group {
             display: flex;
-            border: 2px solid var(--neutral-200);
-            border-radius: 12px;
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-md);
+            background: var(--surface-secondary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
-            background: white;
-            transition: border-color 0.3s ease;
+        }
+
+        [data-theme="dark"] .input-group {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .input-group:focus-within {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
         }
 
         .form-input {
             flex: 1;
             border: none;
-            padding: 16px;
+            background: transparent;
+            padding: var(--space-md);
             font-size: var(--font-size-md);
+            color: var(--text-primary);
             font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .form-input:focus {
             outline: none;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-tertiary);
         }
 
         .input-addon {
             display: flex;
             align-items: center;
-            padding: 16px;
+            gap: var(--space-sm);
+            padding: var(--space-md);
             background: var(--neutral-100);
-            color: var(--text-secondary);
+            border-left: 1px solid var(--neutral-300);
             font-weight: 600;
             font-size: var(--font-size-sm);
+            color: var(--text-secondary);
         }
 
-        .calculation {
-            background: rgba(0, 232, 150, 0.1);
-            border: 1px solid rgba(0, 232, 150, 0.3);
+        [data-theme="dark"] .input-addon {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .token-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            color: white;
+        }
+
+        .bnb-icon {
+            background: #F3BA2F;
+        }
+
+        .weto-icon {
+            background: var(--gradient-primary);
+        }
+
+        /* Transaction Summary */
+        .transaction-summary {
+            background: var(--surface-secondary);
+            border: 1px solid var(--neutral-200);
             border-radius: var(--radius-lg);
             padding: var(--space-lg);
             margin: var(--space-lg) 0;
         }
 
-        .calc-row {
+        [data-theme="dark"] .transaction-summary {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            align-items: center;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--neutral-200);
         }
 
-        .calc-row:last-child {
-            border-top: 1px solid rgba(0, 232, 150, 0.3);
-            padding-top: 8px;
-            margin-top: 8px;
-            font-weight: 700;
+        [data-theme="dark"] .summary-row {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
         }
 
-        .btn {
-            background: var(--gradient-primary);
-            border: none;
-            border-radius: 12px;
-            padding: 16px 32px;
+        .summary-row:last-child {
+            border-bottom: none;
+            margin-top: var(--space-sm);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--neutral-200);
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .summary-row:last-child {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .summary-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Wallet Options */
+        .wallet-options {
+            display: grid;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .wallet-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--surface-secondary);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .wallet-option {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .wallet-option:hover {
+            border-color: var(--primary);
+            background: var(--surface-tertiary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .wallet-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
             font-weight: 600;
+        }
+
+        .metamask-icon {
+            background: #F6851B;
+        }
+
+        .trustwallet-icon {
+            background: #3375BB;
+        }
+
+        /* Mobile Notice */
+        .mobile-notice {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFF8E1 100%);
+            border: 1px solid #FFE082;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        [data-theme="dark"] .mobile-notice {
+            background: linear-gradient(135deg, rgba(255, 243, 205, 0.1) 0%, rgba(255, 248, 225, 0.1) 100%);
+            border-color: rgba(255, 224, 130, 0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .notice-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .notice-icon {
+            font-size: var(--font-size-2xl);
+            flex-shrink: 0;
+        }
+
+        .notice-text h4 {
+            color: var(--text-primary);
             font-size: var(--font-size-md);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+        .notice-text p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.4;
+            margin-bottom: 0;
         }
 
-        .btn:disabled {
-            background: var(--neutral-300);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
+        /* Toast Notifications */
         .toast {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
+            top: 100px;
+            right: var(--space-lg);
+            background: var(--surface-primary);
             border: 1px solid var(--neutral-200);
-            border-radius: 12px;
-            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
             box-shadow: var(--shadow-xl);
-            z-index: 1000;
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
+            z-index: 10000;
+            max-width: 400px;
+            transform: translateX(calc(100% + var(--space-lg)));
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: toastSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .toast {
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .toast.show {
             transform: translateX(0);
         }
 
-        .toast.success { border-left: 4px solid var(--success); }
-        .toast.error { border-left: 4px solid var(--error); }
-        .toast.warning { border-left: 4px solid var(--warning); }
+        @keyframes toastSlideIn {
+            from {
+                transform: translateX(calc(100% + var(--space-lg))) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--gradient-primary);
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--error);
+        }
+
+        .toast.warning {
+            border-left: 4px solid var(--warning);
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .toast-icon {
+            margin-top: 2px;
+        }
+
+        .toast-message {
+            flex: 1;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .toast-close {
+            background: none;
             border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-
-        .countdown-item {
-            text-align: center;
-            padding: var(--space-lg);
-            background: var(--gradient-surface);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            display: block;
-        }
-
-        .countdown-label {
-            font-size: var(--font-size-sm);
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
+            cursor: pointer;
+            padding: 0;
+            font-size: var(--font-size-lg);
+            line-height: 1;
         }
 
-        .wallet-status {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: var(--space-lg);
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-        }
-
-        .wallet-connected {
-            background: rgba(0, 200, 150, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(0, 200, 150, 0.3);
-        }
-
-        .wallet-disconnected {
-            background: rgba(255, 71, 87, 0.1);
-            color: var(--error);
-            border: 1px solid rgba(255, 71, 87, 0.3);
-        }
-
+        /* Loading Spinner */
         .spinner {
             width: 20px;
             height: 20px;
@@ -391,169 +1257,366 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
             display: inline-block;
-            margin-right: 8px;
+            margin-right: var(--space-sm);
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
+        /* Pulse Effect */
+        .pulse {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 102, 255, 0.6);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container { padding: 16px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .countdown { grid-template-columns: repeat(2, 1fr); }
-            .title { font-size: 2rem; }
+            .header-container {
+                padding: 0 var(--space-lg);
+            }
+
+            .nav-menu .nav-link {
+                display: none;
+            }
+
+            .hero-container,
+            .progress-section {
+                padding: 0 var(--space-lg);
+            }
+
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .input-addon {
+                border-left: none;
+                border-top: 1px solid var(--neutral-300);
+                justify-content: center;
+            }
+
+            [data-theme="dark"] .input-addon {
+                border-top-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .toast {
+                right: var(--space-md);
+                left: var(--space-md);
+                max-width: none;
+            }
+
+            .testnet-badge {
+                top: 140px;
+                right: 10px;
+                padding: var(--space-xs) var(--space-sm);
+                font-size: var(--font-size-xs);
+            }
+
+            .contract-info {
+                margin: var(--space-lg) var(--space-md);
+            }
+
+            .user-info-section {
+                margin: var(--space-lg) var(--space-md);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body data-theme="light">
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🌙</button>
+    <!-- Testnet Badge -->
+    <div class="testnet-badge">
+        🧪 BSC TESTNET
+    </div>
 
-    <div class="container">
-        <div class="header">
-            <a href="#" class="logo">
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="https://weto.asia/index_en.html" class="logo">
                 <div class="logo-icon">W</div>
-                <span style="font-size: 24px; font-weight: 800;">WETO</span>
+                <span>WETO</span>
             </a>
             
-            <div class="badge">
-                <div class="status-dot"></div>
-                <span>BSC Testnet • Live Sale</span>
-            </div>
-            
-            <h1 class="title">Simple WETO Token Sale</h1>
-            <p class="subtitle">
-                Buy WETO tokens instantly! No caps, no waiting - get your tokens immediately after purchase.
-            </p>
+            <nav class="nav-menu">
+                <a href="https://weto.asia/assets/pdf/weto%20whitepaper_EN.pdf" target="_blank" class="nav-link">Whitepaper</a>
+                <a href="https://immhworld.com/index-en.html" target="_blank" class="nav-link">MyMoment</a>
+                <button class="wallet-btn" onclick="handleWalletConnection()" id="walletBtn">
+                    Connect Wallet
+                </button>
+            </nav>
         </div>
+    </header>
 
-        <!-- Countdown -->
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">0</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">0</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">0</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">0</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-badge">
+                    <div class="status-dot"></div>
+                    <span>BSC Testnet • Pre-Sale Testing Live</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    WETO Token Testnet<br>
+                    Pre-Sale Testing
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Test the WETO token pre-sale on BSC Testnet. Experience the MyMoment ecosystem 
+                    with real smart contract interactions using test BNB.
+                </p>
 
-        <div class="cards-grid">
-            <!-- Sale Info Card -->
-            <div class="card">
-                <h2>📊 Sale Information</h2>
+                <!-- Contract Info -->
+                <div class="contract-info">
+                    <div class="contract-item">
+                        <span class="contract-label">Token Contract:</span>
+                        <span class="contract-address" onclick="copyToClipboard('0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b')">0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b</span>
+                    </div>
+                    <div class="contract-item">
+                        <span class="contract-label">Sale Contract:</span>
+                        <span class="contract-address" onclick="copyToClipboard('0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1')">0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1</span>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
                 <div class="stats-grid">
-                    <div class="stat">
-                        <span class="stat-value" id="tokenPrice">1,000</span>
+                    <div class="stat-card">
+                        <span class="stat-value">1 tBNB</span>
+                        <span class="stat-label">Price (Test BNB)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="wetoPerBnb">1,000</span>
                         <span class="stat-label">WETO per tBNB</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value" id="bonusPercent">10%</span>
+                    <div class="stat-card">
+                        <span class="stat-value">+10%</span>
                         <span class="stat-label">Bonus Tokens</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value" id="totalSold">0</span>
-                        <span class="stat-label">Tokens Sold</span>
+                </div>
+
+                <!-- Countdown -->
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">25</span>
+                        <span class="countdown-label">Days</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value" id="totalRaised">0</span>
-                        <span class="stat-label">BNB Raised</span>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">14</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">32</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">45</span>
+                        <span class="countdown-label">Seconds</span>
                     </div>
                 </div>
-                
-                <div style="margin-top: var(--space-lg);">
-                    <div style="font-size: var(--font-size-sm); color: var(--text-secondary); margin-bottom: 8px;">
-                        Sale Period: August 12 - August 31, 2025
+
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <div class="progress-title">Sale Progress</div>
+                        <div class="progress-stats" id="progressStats">Loading...</div>
                     </div>
-                    <div style="font-size: var(--font-size-sm); color: var(--text-secondary);">
-                        Status: <span id="saleStatus" style="font-weight: 600;">Loading...</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar"></div>
                     </div>
+                    <div class="progress-percentage" id="progressPercentage">0%</div>
+                </div>
+
+                <!-- User Info Section -->
+                <div class="user-info-section" id="userInfoSection" style="display: none;">
+                    <h2 style="text-align: center; margin-bottom: var(--space-xl); color: var(--text-primary);">📊 My Purchase Information</h2>
+                    <div class="user-stats-grid">
+                        <div class="user-stat-card">
+                            <span class="user-stat-value" id="myContribution">0 tBNB</span>
+                            <span class="user-stat-label">My Contribution</span>
+                        </div>
+                        <div class="user-stat-card">
+                            <span class="user-stat-value" id="myTokens">0 WETO</span>
+                            <span class="user-stat-label">My Tokens</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-secondary" onclick="withdrawTokens()" id="withdrawBtn" disabled>
+                            💎 Withdraw Tokens
+                        </button>
+                        <button class="btn-secondary" onclick="getRefund()" id="refundBtn" disabled>
+                            🔄 Get Refund
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="cta-container">
+                    <button class="btn-primary" onclick="openBuyModal()">
+                        Buy WETO Tokens
+                    </button>
+                    <a href="https://testnet.binance.org/faucet-smart" target="_blank" class="btn-secondary">
+                        Get Test BNB
+                    </a>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Purchase Card -->
-            <div class="card">
-                <h2>💰 Buy WETO Tokens</h2>
-                
-                <div class="wallet-status" id="walletStatus">
-                    <div class="wallet-disconnected">
-                        ❌ Wallet not connected
-                    </div>
+    <!-- Buy Modal -->
+    <div class="modal" id="buyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Buy WETO Tokens</h2>
+                <button class="close-btn" onclick="closeBuyModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Wallet Balance: <span id="walletBalance">0 tBNB</span></label>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Amount (tBNB)</label>
                     <div class="input-group">
-                        <input type="number" class="form-input" id="buyAmount" placeholder="0.1" min="0.001" step="0.001" value="0.1">
-                        <div class="input-addon">tBNB</div>
+                        <input type="number" class="form-input" placeholder="0.1" value="0.1" id="buyAmount" min="0.001" step="0.001">
+                        <div class="input-addon">
+                            <div class="token-icon bnb-icon">tBNB</div>
+                            <span>tBNB</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="calculation" id="calculation">
-                    <div class="calc-row">
-                        <span>Base Tokens:</span>
-                        <span id="baseTokens">100</span>
-                    </div>
-                    <div class="calc-row">
-                        <span>Bonus (10%):</span>
-                        <span id="bonusTokens">10</span>
-                    </div>
-                    <div class="calc-row">
-                        <span>Total You Get:</span>
-                        <span id="totalTokens">110 WETO</span>
+                <div class="form-group">
+                    <label class="form-label">You'll Receive (WETO)</label>
+                    <div class="input-group">
+                        <input type="text" class="form-input" id="getAmount" value="100" disabled>
+                        <div class="input-addon">
+                            <div class="token-icon weto-icon">W</div>
+                            <span>WETO</span>
+                        </div>
                     </div>
                 </div>
 
-                <button class="btn" id="connectBtn" onclick="connectWallet()">
-                    Connect Wallet
-                </button>
+                <div class="transaction-summary">
+                    <div class="summary-row">
+                        <span class="summary-label">Exchange Rate</span>
+                        <span class="summary-value">1 tBNB = 1,000 WETO</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Bonus (10%)</span>
+                        <span class="summary-value" id="bonusAmount">10 WETO</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Total WETO</span>
+                        <span class="summary-value" id="totalAmount">110 WETO</span>
+                    </div>
+                </div>
 
-                <button class="btn" id="buyBtn" onclick="buyTokens()" style="display: none;" disabled>
-                    Buy Tokens
+                <button class="btn-primary" id="buyBtn" style="width: 100%" onclick="buyWETOTokens()">
+                    Complete Purchase
                 </button>
             </div>
         </div>
+    </div>
 
-        <!-- User Stats -->
-        <div class="card" id="userStats" style="display: none;">
-            <h2>👤 Your Purchases</h2>
-            <div class="stats-grid">
-                <div class="stat">
-                    <span class="stat-value" id="userTokens">0</span>
-                    <span class="stat-label">WETO Purchased</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="userContribution">0</span>
-                    <span class="stat-label">tBNB Contributed</span>
-                </div>
+    <!-- Connect Modal -->
+    <div class="modal" id="connectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Connect Wallet</h2>
+                <button class="close-btn" onclick="closeConnectModal()">&times;</button>
             </div>
-        </div>
-
-        <!-- Contract Info -->
-        <div class="card">
-            <h2>📋 Contract Information</h2>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: var(--font-size-sm); line-height: 1.8;">
-                <div style="margin-bottom: 8px;">
-                    <strong>Token:</strong> 
-                    <span style="color: var(--primary); cursor: pointer;" onclick="copyToClipboard('0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b')">
-                        0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b
-                    </span>
+            <div class="modal-body">
+                <!-- 모바일 안내 메시지 -->
+                <div id="mobileNotice" class="mobile-notice" style="display: none;">
+                    <div class="notice-content">
+                        <div class="notice-icon">📱</div>
+                        <div class="notice-text">
+                            <h4>모바일 사용자 안내</h4>
+                            <p>모바일에서는 메타마스크 앱의 내장 브라우저를 사용해주세요!</p>
+                            <button class="btn-primary" onclick="openInMetaMaskApp()" style="margin-top: 12px; font-size: 14px; padding: 8px 16px;">
+                                메타마스크 앱에서 열기
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <strong>Sale:</strong> 
-                    <span id="saleContractAddress" style="color: var(--primary); cursor: pointer;">
-                        Deploy new contract first
-                    </span>
+
+                <div class="wallet-options">
+                    <button class="wallet-option" onclick="connectMetaMask()">
+                        <div class="wallet-icon metamask-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                        </div>
+                        <span>MetaMask</span>
+                    </button>
+                    
+                    <button class="wallet-option" onclick="connectTrustWallet()">
+                        <div class="wallet-icon trustwallet-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L3 8v6c0 7.3 5 14.1 13 16 8-1.9 13-8.7 13-16V8L12 2z"/>
+                            </svg>
+                        </div>
+                        <span>Trust Wallet</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -566,162 +1629,157 @@
         let web3 = null;
         let userAccount = null;
         let isConnected = false;
-        let saleContract = null;
-        let tokenContract = null;
         let countdownInterval;
+        let tokenContract = null;
+        let saleContract = null;
 
-        const CONFIG = {
-            // 새로운 심플 세일 컨트랙트 주소 (배포 후 업데이트 필요)
+        const WETO_CONFIG = {
+            // 실제 배포된 컨트랙트 주소들
             tokenAddress: '0xBb3BD507dBc10ffef858Ddbf32241e1Dd107349b',
-            saleAddress: '', // 새 컨트랙트 배포 후 설정
+            saleAddress: '0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1',
             
-            chainId: '0x61', // BSC Testnet
+            // BSC 테스트넷 설정
+            chainId: '0x61', // BSC Testnet Chain ID
             rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
             chainName: 'BSC Testnet',
-            nativeCurrency: { name: 'tBNB', symbol: 'tBNB', decimals: 18 },
+            nativeCurrency: {
+                name: 'tBNB',
+                symbol: 'tBNB',
+                decimals: 18
+            },
             blockExplorerUrls: ['https://testnet.bscscan.com'],
             
-            saleEndTime: new Date('2025-08-31T23:59:59Z').getTime()
+            // 세일 설정
+            tokenPrice: 1000, // 1 BNB = 1000 WETO
+            presaleEnd: new Date('2025-01-31T23:59:59Z'),
+            maxTokensForSale: 100000000, // 1억 토큰
         };
 
-        const SALE_ABI = [
-            "function getSaleInfo() view returns (uint256, uint256, uint256, uint256, uint256, uint256, bool, uint256)",
-            "function getUserInfo(address) view returns (uint256, uint256)",
-            "function calculateTokenAmount(uint256) view returns (uint256, uint256, uint256)",
-            "function buyTokens() payable",
-            "function isSaleActive() view returns (bool)",
-            "event TokensPurchased(address indexed buyer, uint256 bnbAmount, uint256 tokenAmount, uint256 bonusAmount, uint256 totalReceived)"
+        // 컨트랙트 ABI
+        const TOKEN_ABI = [
+            "function name() view returns (string)",
+            "function symbol() view returns (string)",
+            "function balanceOf(address) view returns (uint256)",
+            "function totalSupply() view returns (uint256)"
         ];
 
-        // Theme Management
-        function toggleTheme() {
-            const body = document.body;
-            const toggle = document.getElementById('themeToggle');
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            toggle.textContent = isDark ? '🌙' : '☀️';
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
-        }
+        const SALE_ABI = [
+            "function getSaleInfo() view returns (uint256, uint256, uint256, uint256, uint256, uint256, uint256, bool)",
+            "function getUserInfo(address) view returns (uint256, uint256)",
+            "function getTimeLeft() view returns (uint256)",
+            "function buyTokens() payable",
+            "function withdrawTokens()",
+            "function getRefund()",
+            "event TokensPurchased(address indexed buyer, uint256 bnbAmount, uint256 tokenAmount)"
+        ];
 
-        function initTheme() {
-            const theme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', theme);
-            document.getElementById('themeToggle').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        // Wallet Connection
-        async function connectWallet() {
-            if (typeof window.ethereum === 'undefined') {
-                showToast('Please install MetaMask!', 'error');
-                return;
-            }
-
-            try {
-                setButtonLoading('connectBtn', true);
-                
-                const accounts = await window.ethereum.request({
-                    method: 'eth_requestAccounts'
-                });
-
-                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-                
-                if (chainId !== CONFIG.chainId) {
-                    await switchToTestnet();
-                }
-
-                web3 = new Web3(window.ethereum);
-                userAccount = accounts[0];
-                isConnected = true;
-
-                await updateWalletUI();
-                await initializeContracts();
-                
-                showToast('Wallet connected successfully!', 'success');
-                
-            } catch (error) {
-                console.error('Connection failed:', error);
-                showToast('Connection failed: ' + error.message, 'error');
-            } finally {
-                setButtonLoading('connectBtn', false);
-            }
-        }
-
-        async function switchToTestnet() {
-            try {
-                await window.ethereum.request({
-                    method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: CONFIG.chainId }]
-                });
-            } catch (error) {
-                if (error.code === 4902) {
-                    await window.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [{
-                            chainId: CONFIG.chainId,
-                            chainName: CONFIG.chainName,
-                            nativeCurrency: CONFIG.nativeCurrency,
-                            rpcUrls: [CONFIG.rpcUrl],
-                            blockExplorerUrls: CONFIG.blockExplorerUrls
-                        }]
-                    });
-                } else {
-                    throw error;
-                }
-            }
-        }
-
+        // 컨트랙트 초기화
         async function initializeContracts() {
-            if (!CONFIG.saleAddress) {
-                showToast('Please deploy the new sale contract first!', 'warning');
-                return;
+            if (!web3 || !userAccount) {
+                showToast('Please connect your wallet first!', 'error');
+                return false;
             }
 
             try {
+                // ethers.js 사용
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
-                saleContract = new ethers.Contract(CONFIG.saleAddress, SALE_ABI, provider);
                 
+                tokenContract = new ethers.Contract(
+                    WETO_CONFIG.tokenAddress,
+                    TOKEN_ABI,
+                    provider
+                );
+                
+                saleContract = new ethers.Contract(
+                    WETO_CONFIG.saleAddress,
+                    SALE_ABI,
+                    provider
+                );
+
+                // 컨트랙트 유효성 검사
+                await tokenContract.name();
+                await saleContract.getSaleInfo();
+                
+                showToast('✅ Contracts connected successfully!', 'success');
+                
+                // 세일 정보 로드
                 await loadSaleInfo();
                 await loadUserInfo();
                 
+                return true;
             } catch (error) {
                 console.error('Contract initialization failed:', error);
-                showToast('Failed to connect to contracts', 'error');
+                showToast('Failed to connect to contracts: ' + error.message, 'error');
+                return false;
             }
         }
 
+        // 세일 정보 로드
         async function loadSaleInfo() {
             if (!saleContract) return;
             
             try {
                 const info = await saleContract.getSaleInfo();
-                const isActive = await saleContract.isSaleActive();
+                const saleInfo = {
+                    tokenPrice: info[0],
+                    hardCap: info[1],
+                    softCap: info[2],
+                    totalSold: info[3],
+                    totalRaised: info[4],
+                    saleStartTime: info[5],
+                    saleEndTime: info[6],
+                    saleActive: info[7]
+                };
                 
-                document.getElementById('tokenPrice').textContent = info[0].toString();
-                document.getElementById('bonusPercent').textContent = info[1].toString() + '%';
-                document.getElementById('totalSold').textContent = formatNumber(ethers.utils.formatEther(info[2]));
-                document.getElementById('totalRaised').textContent = parseFloat(ethers.utils.formatEther(info[3])).toFixed(2);
-                document.getElementById('saleStatus').textContent = isActive ? '🟢 Active' : '🔴 Inactive';
+                updateSaleDisplay(saleInfo);
                 
             } catch (error) {
                 console.error('Failed to load sale info:', error);
             }
         }
 
+        // 사용자 정보 로드
         async function loadUserInfo() {
             if (!saleContract || !userAccount) return;
             
             try {
                 const userInfo = await saleContract.getUserInfo(userAccount);
+                const contribution = ethers.utils.formatEther(userInfo[0]);
+                const tokensPurchased = ethers.utils.formatEther(userInfo[1]);
                 
-                const tokens = parseFloat(ethers.utils.formatEther(userInfo[0]));
-                const contribution = parseFloat(ethers.utils.formatEther(userInfo[1]));
+                // UI 업데이트
+                const myContribution = document.getElementById('myContribution');
+                const myTokens = document.getElementById('myTokens');
+                const userInfoSection = document.getElementById('userInfoSection');
                 
-                document.getElementById('userTokens').textContent = formatNumber(tokens);
-                document.getElementById('userContribution').textContent = contribution.toFixed(4);
+                if (myContribution) {
+                    myContribution.textContent = parseFloat(contribution).toFixed(4) + ' tBNB';
+                }
                 
-                if (tokens > 0 || contribution > 0) {
-                    document.getElementById('userStats').style.display = 'block';
+                if (myTokens) {
+                    myTokens.textContent = parseFloat(tokensPurchased).toLocaleString() + ' WETO';
+                }
+                
+                // 구매한 적이 있으면 사용자 정보 섹션 표시
+                if (parseFloat(contribution) > 0 && userInfoSection) {
+                    userInfoSection.style.display = 'block';
+                }
+                
+                // 세일 정보도 함께 로드하여 버튼 상태 업데이트
+                const saleInfo = await saleContract.getSaleInfo();
+                const hasTokens = userInfo[1].gt(0);
+                const saleEnded = !saleInfo[7] || Date.now() / 1000 > saleInfo[6].toNumber();
+                const softCapReached = saleInfo[4].gte(saleInfo[2]); // totalRaised >= softCap
+                
+                const withdrawBtn = document.getElementById('withdrawBtn');
+                const refundBtn = document.getElementById('refundBtn');
+                
+                if (withdrawBtn) {
+                    withdrawBtn.disabled = !(hasTokens && saleEnded && softCapReached);
+                }
+                
+                if (refundBtn) {
+                    refundBtn.disabled = !(hasTokens && saleEnded && !softCapReached);
                 }
                 
             } catch (error) {
@@ -729,191 +1787,588 @@
             }
         }
 
-        async function updateWalletUI() {
-            if (!isConnected || !userAccount) return;
-
-            try {
-                const balance = await web3.eth.getBalance(userAccount);
-                const bnbBalance = web3.utils.fromWei(balance, 'ether');
-                
-                const walletStatus = document.getElementById('walletStatus');
-                walletStatus.innerHTML = `
-                    <div class="wallet-connected">
-                        ✅ ${userAccount.slice(0, 6)}...${userAccount.slice(-4)} 
-                        (${parseFloat(bnbBalance).toFixed(4)} tBNB)
-                    </div>
-                `;
-                
-                document.getElementById('connectBtn').style.display = 'none';
-                document.getElementById('buyBtn').style.display = 'block';
-                document.getElementById('buyBtn').disabled = false;
-                
-            } catch (error) {
-                console.error('Failed to update wallet UI:', error);
+        // 세일 정보 UI 업데이트
+        function updateSaleDisplay(saleInfo) {
+            if (!saleInfo.tokenPrice) return;
+            
+            const tokenPrice = saleInfo.tokenPrice.toString();
+            const totalSoldEther = parseFloat(ethers.utils.formatEther(saleInfo.totalSold));
+            const totalRaisedEther = parseFloat(ethers.utils.formatEther(saleInfo.totalRaised));
+            const hardCapEther = parseFloat(ethers.utils.formatEther(saleInfo.hardCap));
+            
+            // 토큰 가격 업데이트
+            const wetoPerBnbElement = document.getElementById('wetoPerBnb');
+            if (wetoPerBnbElement) {
+                wetoPerBnbElement.textContent = tokenPrice;
+            }
+            
+            // 진행률 업데이트
+            const progress = (totalSoldEther / hardCapEther) * 100;
+            const progressBar = document.getElementById('progressBar');
+            const progressPercentage = document.getElementById('progressPercentage');
+            const progressStats = document.getElementById('progressStats');
+            
+            if (progressBar) {
+                progressBar.style.width = Math.min(progress, 100) + '%';
+            }
+            
+            if (progressPercentage) {
+                progressPercentage.textContent = progress.toFixed(1) + '%';
+            }
+            
+            if (progressStats) {
+                progressStats.textContent = `${totalSoldEther.toLocaleString()} / ${hardCapEther.toLocaleString()}`;
             }
         }
 
-        async function calculateTokens() {
-            const amount = parseFloat(document.getElementById('buyAmount').value) || 0;
-            
-            if (amount <= 0) {
-                document.getElementById('baseTokens').textContent = '0';
-                document.getElementById('bonusTokens').textContent = '0';
-                document.getElementById('totalTokens').textContent = '0 WETO';
-                return;
-            }
-            
-            if (saleContract) {
-                try {
-                    const amountWei = ethers.utils.parseEther(amount.toString());
-                    const result = await saleContract.calculateTokenAmount(amountWei);
-                    
-                    const base = formatNumber(ethers.utils.formatEther(result[0]));
-                    const bonus = formatNumber(ethers.utils.formatEther(result[1]));
-                    const total = formatNumber(ethers.utils.formatEther(result[2]));
-                    
-                    document.getElementById('baseTokens').textContent = base;
-                    document.getElementById('bonusTokens').textContent = bonus;
-                    document.getElementById('totalTokens').textContent = total + ' WETO';
-                    
-                } catch (error) {
-                    console.error('Calculation failed:', error);
-                }
+        // Utility Functions
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function setButtonLoading(button, loading = true) {
+            if (loading) {
+                const originalText = button.textContent;
+                button.setAttribute('data-original-text', originalText);
+                button.innerHTML = '<span class="spinner"></span>Processing...';
+                button.disabled = true;
+                button.style.pointerEvents = 'none';
             } else {
-                // Fallback calculation
-                const baseTokens = amount * 1000;
-                const bonusTokens = baseTokens * 0.1;
-                const totalTokens = baseTokens + bonusTokens;
-                
-                document.getElementById('baseTokens').textContent = formatNumber(baseTokens);
-                document.getElementById('bonusTokens').textContent = formatNumber(bonusTokens);
-                document.getElementById('totalTokens').textContent = formatNumber(totalTokens) + ' WETO';
+                const originalText = button.getAttribute('data-original-text');
+                button.textContent = originalText;
+                button.disabled = false;
+                button.style.pointerEvents = '';
             }
         }
 
-        async function buyTokens() {
-            if (!saleContract || !isConnected) {
-                showToast('Please connect your wallet first!', 'error');
-                return;
+        // Theme Management
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
             }
+        }
 
-            const amount = parseFloat(document.getElementById('buyAmount').value);
-            if (!amount || amount <= 0) {
-                showToast('Please enter a valid amount!', 'error');
-                return;
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeIcon = document.getElementById('theme-icon');
+            
+            document.body.setAttribute('data-theme', savedTheme);
+            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function calculateWETOAmount() {
+            const buyAmountInput = document.getElementById('buyAmount');
+            const getAmountInput = document.getElementById('getAmount');
+            const bonusAmountSpan = document.getElementById('bonusAmount');
+            const totalAmountSpan = document.getElementById('totalAmount');
+            
+            if (!buyAmountInput || !getAmountInput) return;
+
+            const bnbAmount = parseFloat(buyAmountInput.value) || 0;
+            
+            if (bnbAmount > 0) {
+                // 1 BNB = 1000 WETO (고정 가격)
+                const wetoAmount = Math.floor(bnbAmount * WETO_CONFIG.tokenPrice);
+                const bonusTokens = Math.floor(wetoAmount * 10 / 100); // 10% 보너스
+                const totalTokens = wetoAmount + bonusTokens;
+                
+                getAmountInput.value = wetoAmount.toLocaleString();
+                if (bonusAmountSpan) bonusAmountSpan.textContent = bonusTokens.toLocaleString() + ' WETO';
+                if (totalAmountSpan) totalAmountSpan.textContent = totalTokens.toLocaleString() + ' WETO';
+            } else {
+                getAmountInput.value = '0';
+                if (bonusAmountSpan) bonusAmountSpan.textContent = '0 WETO';
+                if (totalAmountSpan) totalAmountSpan.textContent = '0 WETO';
             }
+        }
 
+        // Mobile Detection
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function isMetaMaskMobileApp() {
+            return navigator.userAgent.includes('MetaMaskMobile');
+        }
+
+        // Wallet Connection
+        async function connectMetaMask() {
             try {
-                setButtonLoading('buyBtn', true);
-                
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-                const saleContractWithSigner = saleContract.connect(signer);
-                
-                const amountWei = ethers.utils.parseEther(amount.toString());
-                
-                showToast('Sending transaction...', 'success');
-                
-                const tx = await saleContractWithSigner.buyTokens({
-                    value: amountWei
-                });
-                
-                showToast('Transaction sent! Waiting for confirmation...', 'success');
-                
-                const receipt = await tx.wait();
-                
-                if (receipt.status === 1) {
-                    showToast('Purchase successful! Tokens sent to your wallet! 🎉', 'success');
-                    
-                    setTimeout(() => {
-                        showToast(`View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
-                    }, 2000);
-                    
-                    await loadSaleInfo();
-                    await loadUserInfo();
-                    await updateWalletUI();
-                    
-                } else {
-                    throw new Error('Transaction failed');
+                // 모바일 환경 처리
+                if (isMobile() && !isMetaMaskMobileApp()) {
+                    if (typeof window.ethereum === 'undefined') {
+                        showToast('📱 모바일에서는 메타마스크 앱을 통해 접속해주세요!', 'warning');
+                        
+                        // 메타마스크 앱으로 딥링크 연결
+                        const currentUrl = encodeURIComponent(window.location.href);
+                        const metamaskDeepLink = `https://metamask.app.link/dapp/${window.location.hostname}${window.location.pathname}`;
+                        
+                        setTimeout(() => {
+                            window.open(metamaskDeepLink, '_blank');
+                        }, 1000);
+                        
+                        // 3초 후 추가 안내 메시지
+                        setTimeout(() => {
+                            showToast('메타마스크 앱에서 브라우저를 통해 이 사이트에 접속해주세요!', 'warning');
+                        }, 3000);
+                        return;
+                    }
                 }
+
+                // 데스크톱에서 메타마스크 미설치 시
+                if (!isMobile() && typeof window.ethereum === 'undefined') {
+                    showToast('MetaMask not detected. Please install MetaMask extension.', 'error');
+                    setTimeout(() => {
+                        window.open('https://metamask.io/download/', '_blank');
+                    }, 2000);
+                    return;
+                }
+
+                const connectBtns = document.querySelectorAll('.wallet-option');
+                connectBtns.forEach(btn => {
+                    if (btn.textContent.includes('MetaMask')) {
+                        setButtonLoading(btn, true);
+                    }
+                });
+
+                showToast('⚡ Connecting to MetaMask...', 'success');
+
+                const accounts = await window.ethereum.request({
+                    method: 'eth_requestAccounts',
+                });
+
+                if (!accounts || accounts.length === 0) {
+                    throw new Error('Please select an account in MetaMask.');
+                }
+
+                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
                 
+                // BSC 테스트넷으로 전환
+                if (chainId !== WETO_CONFIG.chainId) {
+                    showToast('⚡ Switching to BSC Testnet...', 'success');
+                    
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_switchEthereumChain',
+                            params: [{ chainId: WETO_CONFIG.chainId }],
+                        });
+                    } catch (switchError) {
+                        if (switchError.code === 4902) {
+                            await window.ethereum.request({
+                                method: 'wallet_addEthereumChain',
+                                params: [{
+                                    chainId: WETO_CONFIG.chainId,
+                                    chainName: WETO_CONFIG.chainName,
+                                    nativeCurrency: WETO_CONFIG.nativeCurrency,
+                                    rpcUrls: [WETO_CONFIG.rpcUrl],
+                                    blockExplorerUrls: WETO_CONFIG.blockExplorerUrls
+                                }]
+                            });
+                        } else {
+                            throw switchError;
+                        }
+                    }
+                }
+
+                web3 = new Web3(window.ethereum);
+                userAccount = accounts[0];
+                isConnected = true;
+
+                await updateWalletUI();
+                
+                // 컨트랙트 자동 초기화
+                showToast('🔗 Connecting to contracts...', 'success');
+                const contractsInitialized = await initializeContracts();
+                
+                if (contractsInitialized) {
+                    closeConnectModal();
+                    showToast('✨ Wallet and contracts connected successfully!', 'success');
+                } else {
+                    showToast('⚠️ Wallet connected but contracts failed to initialize', 'warning');
+                }
+
             } catch (error) {
-                console.error('Purchase failed:', error);
-                let errorMsg = 'Purchase failed';
+                console.error('Connection error:', error);
+                let errorMsg = 'Connection failed';
                 
                 if (error.code === 4001) {
-                    errorMsg = 'Transaction rejected by user';
-                } else if (error.message.includes('insufficient funds')) {
-                    errorMsg = 'Insufficient funds';
-                } else if (error.message.includes('Sale has ended')) {
-                    errorMsg = 'Sale has ended';
+                    errorMsg = 'Connection rejected by user';
+                } else if (error.code === -32002) {
+                    errorMsg = 'MetaMask is already processing. Please check MetaMask.';
                 } else if (error.message) {
                     errorMsg = error.message;
                 }
                 
                 showToast(errorMsg, 'error');
             } finally {
-                setButtonLoading('buyBtn', false);
+                const connectBtns = document.querySelectorAll('.wallet-option');
+                connectBtns.forEach(btn => {
+                    if (btn.textContent.includes('MetaMask') || btn.textContent.includes('Processing')) {
+                        setButtonLoading(btn, false);
+                    }
+                });
             }
         }
 
-        // Countdown Timer
-        function initCountdown() {
-            const endTime = CONFIG.saleEndTime;
-            
-            function updateCountdown() {
-                const now = Date.now();
-                const distance = endTime - now;
-                
-                if (distance < 0) {
-                    document.querySelectorAll('.countdown-number').forEach(el => {
-                        el.textContent = '00';
-                    });
+        async function connectTrustWallet() {
+            // 모바일에서 Trust Wallet 처리
+            if (isMobile()) {
+                if (typeof window.ethereum === 'undefined') {
+                    showToast('📱 Trust Wallet 앱을 통해 접속해주세요!', 'warning');
+                    
+                    const currentUrl = window.location.href;
+                    const trustWalletDeepLink = `https://link.trustwallet.com/open_url?coin_id=20000714&url=${encodeURIComponent(currentUrl)}`;
+                    
+                    setTimeout(() => {
+                        window.location.href = trustWalletDeepLink;
+                    }, 1000);
+                    
+                    setTimeout(() => {
+                        showToast('Trust Wallet 앱에서 브라우저를 통해 이 사이트에 접속해주세요!', 'warning');
+                    }, 3000);
                     return;
                 }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             }
             
-            updateCountdown();
-            countdownInterval = setInterval(updateCountdown, 1000);
+            // 데스크톱 또는 인앱 브라우저에서는 MetaMask와 동일하게 처리
+            await connectMetaMask();
         }
 
-        // Utility Functions
-        function formatNumber(num) {
-            const number = parseFloat(num);
-            if (number >= 1000000) {
-                return (number / 1000000).toFixed(1) + 'M';
-            } else if (number >= 1000) {
-                return (number / 1000).toFixed(1) + 'K';
-            } else {
-                return number.toLocaleString();
-            }
-        }
+        async function updateWalletUI() {
+            if (!isConnected || !userAccount || !web3) return;
 
-        function setButtonLoading(buttonId, loading) {
-            const button = document.getElementById(buttonId);
-            if (loading) {
-                button.innerHTML = '<span class="spinner"></span>Processing...';
-                button.disabled = true;
-            } else {
-                if (buttonId === 'connectBtn') {
-                    button.innerHTML = 'Connect Wallet';
-                } else if (buttonId === 'buyBtn') {
-                    button.innerHTML = 'Buy Tokens';
+            try {
+                const walletBtn = document.getElementById('walletBtn');
+                const walletBalance = document.getElementById('walletBalance');
+
+                const shortAddress = userAccount.slice(0, 6) + '...' + userAccount.slice(-4);
+                
+                if (walletBtn) {
+                    walletBtn.textContent = shortAddress;
+                    walletBtn.classList.add('connected');
                 }
-                button.disabled = false;
+
+                if (walletBalance) {
+                    walletBalance.innerHTML = '<span style="opacity: 0.7;">Loading...</span>';
+                }
+
+                const balance = await web3.eth.getBalance(userAccount);
+                const bnbBalance = web3.utils.fromWei(balance, 'ether');
+                const displayBalance = parseFloat(bnbBalance).toFixed(4);
+                
+                if (walletBalance) {
+                    walletBalance.innerHTML = `<span style="color: var(--success); font-weight: bold;">${displayBalance} tBNB</span>`;
+                }
+            } catch (error) {
+                console.error('Error updating wallet UI:', error);
+                showToast('Error updating wallet information', 'error');
             }
         }
 
+        // 실제 토큰 구매 함수
+        async function buyWETOTokens() {
+            if (!isConnected) {
+                showToast('Please connect your wallet first!', 'error');
+                return;
+            }
+
+            if (!saleContract) {
+                showToast('Contracts not initialized. Please refresh and try again.', 'error');
+                return;
+            }
+
+            const buyAmountInput = document.getElementById('buyAmount');
+            const bnbAmount = parseFloat(buyAmountInput.value);
+            
+            if (!bnbAmount || bnbAmount <= 0) {
+                showToast('Please enter a valid BNB amount!', 'error');
+                buyAmountInput.focus();
+                return;
+            }
+
+            if (bnbAmount < 0.001) {
+                showToast('Minimum purchase amount is 0.001 tBNB', 'error');
+                return;
+            }
+
+            try {
+                const buyBtn = document.getElementById('buyBtn');
+                setButtonLoading(buyBtn, true);
+
+                // 잔액 확인
+                const balance = await web3.eth.getBalance(userAccount);
+                const bnbBalance = parseFloat(web3.utils.fromWei(balance, 'ether'));
+                
+                if (bnbBalance < bnbAmount) {
+                    throw new Error(`Insufficient tBNB balance. You have ${bnbBalance.toFixed(4)} tBNB but need ${bnbAmount} tBNB`);
+                }
+
+                showToast('⚡ Preparing transaction...', 'success');
+                
+                // Signer 생성
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const saleContractWithSigner = saleContract.connect(signer);
+                
+                // 가스 예상 계산
+                const gasEstimate = await saleContractWithSigner.estimateGas.buyTokens({
+                    value: ethers.utils.parseEther(bnbAmount.toString())
+                });
+                
+                showToast('📝 Sending transaction...', 'success');
+                
+                // 실제 트랜잭션 전송
+                const tx = await saleContractWithSigner.buyTokens({
+                    value: ethers.utils.parseEther(bnbAmount.toString()),
+                    gasLimit: gasEstimate.mul(120).div(100) // 20% 여유분 추가
+                });
+                
+                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
+                console.log('Transaction hash:', tx.hash);
+                
+                // 트랜잭션 완료 대기
+                const receipt = await tx.wait();
+                
+                if (receipt.status === 1) {
+                    const expectedTokens = bnbAmount * WETO_CONFIG.tokenPrice;
+                    showToast(`🎉 Purchase successful! You bought ${expectedTokens.toLocaleString()} WETO tokens!`, 'success');
+                    
+                    // UI 업데이트
+                    buyAmountInput.value = '0.1';
+                    calculateWETOAmount();
+                    closeBuyModal();
+                    
+                    // 세일 정보 새로고침
+                    await loadSaleInfo();
+                    await loadUserInfo();
+                    await updateWalletUI();
+                    
+                    // 트랜잭션 링크 표시
+                    setTimeout(() => {
+                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
+                    }, 2000);
+                    
+                } else {
+                    throw new Error('Transaction failed');
+                }
+                
+            } catch (error) {
+                console.error('Transaction error:', error);
+                
+                let errorMsg = 'Transaction failed';
+                if (error.code === 4001) {
+                    errorMsg = 'Transaction rejected by user';
+                } else if (error.code === -32603) {
+                    errorMsg = 'Internal error. Please try again.';
+                } else if (error.message.includes('insufficient funds')) {
+                    errorMsg = 'Insufficient funds for gas + value';
+                } else if (error.message.includes('Hard cap exceeded')) {
+                    errorMsg = 'Purchase would exceed hard cap';
+                } else if (error.message.includes('Sale has ended')) {
+                    errorMsg = 'Token sale has ended';
+                } else if (error.message) {
+                    errorMsg = error.message;
+                }
+                
+                showToast(errorMsg, 'error');
+            } finally {
+                const buyBtn = document.getElementById('buyBtn');
+                setButtonLoading(buyBtn, false);
+            }
+        }
+
+        // Modal Management
+        function openBuyModal() {
+            const modal = document.getElementById('buyModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBuyModal() {
+            const modal = document.getElementById('buyModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function openConnectModal() {
+            const modal = document.getElementById('connectModal');
+            const mobileNotice = document.getElementById('mobileNotice');
+            
+            // 모바일 환경이고 메타마스크 앱이 아닌 경우 안내 메시지 표시
+            if (isMobile() && !isMetaMaskMobileApp() && typeof window.ethereum === 'undefined') {
+                mobileNotice.style.display = 'block';
+            } else {
+                mobileNotice.style.display = 'none';
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeConnectModal() {
+            const modal = document.getElementById('connectModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function openInMetaMaskApp() {
+            const currentUrl = window.location.href;
+            const metamaskDeepLink = `https://metamask.app.link/dapp/${window.location.hostname}${window.location.pathname}${window.location.search}`;
+            
+            showToast('메타마스크 앱으로 이동 중...', 'success');
+            
+            // 메타마스크 앱으로 리디렉션
+            setTimeout(() => {
+                window.location.href = metamaskDeepLink;
+            }, 1000);
+            
+            // 백업: 새 탭에서 열기
+            setTimeout(() => {
+                window.open(metamaskDeepLink, '_blank');
+            }, 500);
+        }
+
+        function handleWalletConnection() {
+            if (isConnected) {
+                showToast('Wallet connected. Use MetaMask to disconnect manually.', 'success');
+            } else {
+                openConnectModal();
+            }
+        }
+
+        // 클립보드 복사 함수
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('📋 Address copied to clipboard!', 'success');
+            }).catch(() => {
+                showToast('Failed to copy address', 'error');
+            });
+        }
+
+        // 토큰 인출 함수
+        async function withdrawTokens() {
+            if (!saleContract || !userAccount) {
+                showToast('Please connect your wallet first!', 'error');
+                return;
+            }
+
+            try {
+                const withdrawBtn = document.getElementById('withdrawBtn');
+                setButtonLoading(withdrawBtn, true);
+
+                showToast('📝 Preparing withdrawal...', 'success');
+                
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const saleContractWithSigner = saleContract.connect(signer);
+                
+                const tx = await saleContractWithSigner.withdrawTokens();
+                
+                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
+                
+                const receipt = await tx.wait();
+                
+                if (receipt.status === 1) {
+                    showToast('🎉 Tokens withdrawn successfully!', 'success');
+                    await loadUserInfo();
+                    setTimeout(() => {
+                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
+                    }, 2000);
+                } else {
+                    throw new Error('Transaction failed');
+                }
+                
+            } catch (error) {
+                console.error('Withdrawal error:', error);
+                
+                let errorMsg = 'Withdrawal failed';
+                if (error.code === 4001) {
+                    errorMsg = 'Transaction rejected by user';
+                } else if (error.message.includes('No tokens to withdraw')) {
+                    errorMsg = 'No tokens available for withdrawal';
+                } else if (error.message.includes('Sale is still active')) {
+                    errorMsg = 'Cannot withdraw while sale is active';
+                } else if (error.message.includes('Soft cap not reached')) {
+                    errorMsg = 'Cannot withdraw - soft cap not reached';
+                } else if (error.message) {
+                    errorMsg = error.message;
+                }
+                
+                showToast(errorMsg, 'error');
+            } finally {
+                const withdrawBtn = document.getElementById('withdrawBtn');
+                setButtonLoading(withdrawBtn, false);
+            }
+        }
+
+        // 환불 함수
+        async function getRefund() {
+            if (!saleContract || !userAccount) {
+                showToast('Please connect your wallet first!', 'error');
+                return;
+            }
+
+            try {
+                const refundBtn = document.getElementById('refundBtn');
+                setButtonLoading(refundBtn, true);
+
+                showToast('📝 Preparing refund...', 'success');
+                
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const saleContractWithSigner = saleContract.connect(signer);
+                
+                const tx = await saleContractWithSigner.getRefund();
+                
+                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
+                
+                const receipt = await tx.wait();
+                
+                if (receipt.status === 1) {
+                    showToast('💰 Refund processed successfully!', 'success');
+                    await loadUserInfo();
+                    await updateWalletUI();
+                    setTimeout(() => {
+                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
+                    }, 2000);
+                } else {
+                    throw new Error('Transaction failed');
+                }
+                
+            } catch (error) {
+                console.error('Refund error:', error);
+                
+                let errorMsg = 'Refund failed';
+                if (error.code === 4001) {
+                    errorMsg = 'Transaction rejected by user';
+                } else if (error.message.includes('No contribution to refund')) {
+                    errorMsg = 'No contribution available for refund';
+                } else if (error.message.includes('Sale is still active')) {
+                    errorMsg = 'Cannot refund while sale is active';
+                } else if (error.message.includes('Soft cap was reached')) {
+                    errorMsg = 'Cannot refund - soft cap was reached';
+                } else if (error.message) {
+                    errorMsg = error.message;
+                }
+                
+                showToast(errorMsg, 'error');
+            } finally {
+                const refundBtn = document.getElementById('refundBtn');
+                setButtonLoading(refundBtn, false);
+            }
+        }
+
+        // Toast Notifications
         function showToast(message, type = 'success') {
             const existingToast = document.querySelector('.toast');
             if (existingToast) {
@@ -922,68 +2377,245 @@
 
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
-            toast.textContent = message;
+            
+            const icons = {
+                success: '✅',
+                error: '❌',
+                warning: '⚠️'
+            };
+
+            toast.innerHTML = `
+                <div class="toast-content">
+                    <div class="toast-icon">${icons[type] || icons.success}</div>
+                    <div class="toast-message">${message}</div>
+                    <button class="toast-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
+                </div>
+            `;
 
             document.body.appendChild(toast);
             
-            setTimeout(() => toast.classList.add('show'), 100);
             setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
+                toast.classList.add('show');
+            }, 100);
+
+            setTimeout(() => {
+                if (toast && toast.parentNode) {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast && toast.parentNode) {
+                            toast.remove();
+                        }
+                    }, 300);
+                }
             }, type === 'error' ? 7000 : 5000);
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('Address copied to clipboard!', 'success');
+        // Countdown Timer
+        function initCountdown() {
+            const endDate = WETO_CONFIG.presaleEnd.getTime();
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.querySelectorAll('.countdown-number').forEach(el => {
+                        el.textContent = '00';
+                    });
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                updateCountdownDisplay('days', days);
+                updateCountdownDisplay('hours', hours);
+                updateCountdownDisplay('minutes', minutes);
+                updateCountdownDisplay('seconds', seconds);
+            }
+
+            function updateCountdownDisplay(id, value) {
+                const element = document.getElementById(id);
+                if (element) {
+                    const newValue = String(value).padStart(2, '0');
+                    if (element.textContent !== newValue) {
+                        element.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            element.textContent = newValue;
+                            element.style.transform = 'scale(1)';
+                        }, 200);
+                    }
+                }
+            }
+
+            updateTimer();
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('.stat-card, .countdown-item, .progress-section');
+            elements.forEach(el => {
+                el.classList.add('fade-in-up');
+                observer.observe(el);
             });
+        }
+
+        // Progress Bar Animation
+        function animateProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            const progressPercentage = document.getElementById('progressPercentage');
+            
+            if (progressBar && progressPercentage) {
+                let width = 0;
+                const targetWidth = 0; // 초기값은 0으로 시작
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                function updateProgress(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                    width = targetWidth * easeOutCubic;
+                    
+                    progressBar.style.width = width + '%';
+                    progressPercentage.textContent = width.toFixed(1) + '%';
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateProgress);
+                    }
+                }
+                
+                requestAnimationFrame(updateProgress);
+            }
         }
 
         // Event Listeners
-        document.getElementById('buyAmount').addEventListener('input', calculateTokens);
-
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌟 WETO Testnet Token Sale Platform Initialized');
+            
+            // 테스트넷 환경 안내
+            setTimeout(() => {
+                if (isMobile() && !isMetaMaskMobileApp() && typeof window.ethereum === 'undefined') {
+                    showToast('📱 BSC Testnet에서 테스트하려면 메타마스크 앱을 사용해주세요!', 'warning');
+                } else {
+                    showToast('🧪 WETO 테스트넷 세일에 오신 것을 환영합니다! 테스트 BNB로 구매하세요.', 'success');
+                }
+            }, 1000);
+            
             initTheme();
             initCountdown();
-            calculateTokens();
+            calculateWETOAmount();
             
-            // Auto-connect if previously connected
-            if (localStorage.getItem('walletConnected') === 'true') {
-                setTimeout(() => {
-                    if (typeof window.ethereum !== 'undefined') {
-                        connectWallet();
-                    }
-                }, 1000);
-            }
+            initScrollAnimations();
             
-            showToast('🧪 Welcome to WETO Simple Sale on BSC Testnet!', 'success');
-        });
+            setTimeout(animateProgressBar, 1000);
 
-        if (typeof window.ethereum !== 'undefined') {
-            window.ethereum.on('accountsChanged', (accounts) => {
-                if (accounts.length === 0) {
-                    isConnected = false;
-                    userAccount = null;
-                    localStorage.setItem('walletConnected', 'false');
-                    location.reload();
-                } else if (accounts[0] !== userAccount) {
-                    location.reload();
+            const buyAmountInput = document.getElementById('buyAmount');
+            if (buyAmountInput) {
+                buyAmountInput.addEventListener('input', calculateWETOAmount);
+                buyAmountInput.addEventListener('change', calculateWETOAmount);
+            }
+
+            // MetaMask 이벤트 리스너
+            if (typeof window.ethereum !== 'undefined') {
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    if (accounts.length === 0) {
+                        isConnected = false;
+                        userAccount = null;
+                        tokenContract = null;
+                        saleContract = null;
+                        
+                        const walletBtn = document.getElementById('walletBtn');
+                        if (walletBtn) {
+                            walletBtn.textContent = 'Connect Wallet';
+                            walletBtn.classList.remove('connected');
+                        }
+                        const walletBalance = document.getElementById('walletBalance');
+                        if (walletBalance) walletBalance.textContent = '0 tBNB';
+                        
+                        // 사용자 정보 섹션 숨기기
+                        const userInfoSection = document.getElementById('userInfoSection');
+                        if (userInfoSection) userInfoSection.style.display = 'none';
+                        
+                        showToast('Wallet disconnected', 'error');
+                    } else if (isConnected && accounts[0] !== userAccount) {
+                        userAccount = accounts[0];
+                        updateWalletUI();
+                        if (saleContract) {
+                            loadUserInfo();
+                        }
+                        showToast('Account changed', 'success');
+                    }
+                });
+
+                window.ethereum.on('chainChanged', function (chainId) {
+                    if (chainId !== WETO_CONFIG.chainId && isConnected) {
+                        showToast('⚠️ Please switch to BSC Testnet', 'error');
+                        // 컨트랙트 재초기화
+                        if (isConnected) {
+                            setTimeout(() => {
+                                initializeContracts();
+                            }, 1000);
+                        }
+                    }
+                });
+            }
+
+            // 모달 클릭 이벤트
+            window.addEventListener('click', function(event) {
+                const buyModal = document.getElementById('buyModal');
+                const connectModal = document.getElementById('connectModal');
+                
+                if (event.target === buyModal) {
+                    closeBuyModal();
+                }
+                if (event.target === connectModal) {
+                    closeConnectModal();
                 }
             });
 
-            window.ethereum.on('chainChanged', () => {
-                location.reload();
-            });
-        }
+            // 컨트랙트 주소 클릭 이벤트 추가
+            setTimeout(() => {
+                const contractAddresses = document.querySelectorAll('.contract-address');
+                contractAddresses.forEach(addr => {
+                    addr.addEventListener('click', function() {
+                        copyToClipboard(this.textContent);
+                    });
+                });
+            }, 500);
 
-        window.addEventListener('beforeunload', () => {
-            if (isConnected) {
-                localStorage.setItem('walletConnected', 'true');
-            }
+            // 테스트넷 관련 안내 메시지
+            setTimeout(() => {
+                showToast('💡 팁: BSC 테스트넷 파우셋에서 테스트 BNB를 받으세요!', 'success');
+            }, 5000);
+            
+            // 추가 테스트 안내
+            setTimeout(() => {
+                showToast('🔗 업데이트된 컨트랙트로 실제 테스트가 가능합니다!', 'success');
+            }, 8000);
         });
 
-        // Set new sale contract address here after deployment
-        // CONFIG.saleAddress = '0xA4BC1d44EBCc8B4b10677Af79CE087647c147fb1';
+        window.addEventListener('beforeunload', function() {
+            if (countdownInterval) clearInterval(countdownInterval);
+        });
     </script>
 </body>
 </html>
