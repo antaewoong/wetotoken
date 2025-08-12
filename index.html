@@ -1,5 +1,4 @@
-        // 세일 정보 UI 업데이트
-        function updateSaleDisplay(<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -764,6 +763,80 @@
             letter-spacing: 0.5px;
         }
 
+        /* Withdrawal Info Section */
+        .withdrawal-info-section {
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.1) 0%, rgba(0, 102, 255, 0.1) 100%);
+            border: 1px solid rgba(0, 200, 150, 0.3);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin: var(--space-2xl) auto;
+            max-width: 800px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .withdrawal-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .withdrawal-info {
+            background: var(--surface-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .withdrawal-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            padding: var(--space-md);
+            background: var(--surface-secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .status-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .status-value {
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .status-active {
+            color: var(--success);
+        }
+
+        .status-ended {
+            color: var(--error);
+        }
+
+        .status-pending {
+            color: var(--warning);
+        }
+
+        .withdrawal-note {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         /* CTA Buttons */
         .cta-container {
             display: flex;
@@ -793,6 +866,13 @@
             box-shadow: var(--shadow-xl);
         }
 
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: var(--shadow-md);
+        }
+
         .btn-primary::before {
             content: '';
             position: absolute;
@@ -804,7 +884,7 @@
             transition: left 0.5s ease;
         }
 
-        .btn-primary:hover::before {
+        .btn-primary:hover:not(:disabled)::before {
             left: 100%;
         }
 
@@ -837,6 +917,12 @@
             box-shadow: var(--shadow-lg);
             text-decoration: none;
             color: var(--text-primary);
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Modal Styles */
@@ -1357,7 +1443,8 @@
                 margin: var(--space-lg) var(--space-md);
             }
 
-            .user-info-section {
+            .user-info-section,
+            .withdrawal-info-section {
                 margin: var(--space-lg) var(--space-md);
             }
         }
@@ -1418,8 +1505,7 @@
                 </h1>
                 
                 <p class="hero-subtitle">
-                    Test the WETO token pre-sale on BSC Testnet. Experience the MyMoment ecosystem 
-                    with real smart contract interactions using test BNB.
+                    Test the WETO token pre-sale on BSC Testnet. Purchase tokens now and claim them after the sale ends.
                 </p>
 
                 <!-- Contract Info -->
@@ -1496,16 +1582,39 @@
                         </div>
                         <div class="user-stat-card">
                             <span class="user-stat-value" id="myTokens">0 WETO</span>
-                            <span class="user-stat-label">My Tokens</span>
+                            <span class="user-stat-label">Tokens to Claim</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Withdrawal Info Section (New) -->
+                <div class="withdrawal-info-section" id="withdrawalInfoSection" style="display: none;">
+                    <div class="withdrawal-title">
+                        <span>💎</span>
+                        <span>Token Withdrawal</span>
+                    </div>
+                    
+                    <div class="withdrawal-info">
+                        <div class="withdrawal-status">
+                            <span class="status-label">Sale Status:</span>
+                            <span class="status-value" id="saleStatus">Loading...</span>
+                        </div>
+                        <div class="withdrawal-status">
+                            <span class="status-label">Your Tokens:</span>
+                            <span class="status-value" id="tokensAvailable">0 WETO</span>
                         </div>
                     </div>
                     
-                    <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
-                        <button class="btn-secondary" onclick="withdrawTokens()" id="withdrawBtn" disabled>
+                    <div class="withdrawal-note">
+                        📌 <strong>How it works:</strong><br>
+                        • During sale: Tokens are held in the smart contract<br>
+                        • After sale ends: Click "Withdraw Tokens" to transfer them to your wallet<br>
+                        • No soft cap: All purchases are guaranteed (no refunds needed)
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button class="btn-primary" onclick="withdrawTokens()" id="withdrawBtn" disabled>
                             💎 Withdraw Tokens
-                        </button>
-                        <button class="btn-secondary" onclick="getRefund()" id="refundBtn" disabled>
-                            🔄 Get Refund
                         </button>
                     </div>
                 </div>
@@ -1547,7 +1656,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">You'll Receive (WETO)</label>
+                    <label class="form-label">You'll Get (WETO)</label>
                     <div class="input-group">
                         <input type="text" class="form-input" id="getAmount" value="100" disabled>
                         <div class="input-addon">
@@ -1570,6 +1679,10 @@
                         <span class="summary-label">Total WETO</span>
                         <span class="summary-value" id="totalAmount">110 WETO</span>
                     </div>
+                </div>
+
+                <div style="background: rgba(0, 200, 150, 0.1); border: 1px solid rgba(0, 200, 150, 0.3); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                    💡 <strong>Note:</strong> Tokens will be held in the contract until the sale ends. After sale completion, use the "Withdraw Tokens" button to transfer them to your wallet.
                 </div>
 
                 <button class="btn-primary" id="buyBtn" style="width: 100%" onclick="buyWETOTokens()">
@@ -1674,7 +1787,6 @@
             "function getTimeLeft() view returns (uint256)",
             "function buyTokens() payable",
             "function withdrawTokens()",
-            "function getRefund()",
             "event TokensPurchased(address indexed buyer, uint256 bnbAmount, uint256 tokenAmount)"
         ];
 
@@ -1743,7 +1855,7 @@
             }
         }
 
-        // 사용자 정보 로드
+        // 사용자 정보 로드 (수정됨 - 소프트캡 제거)
         async function loadUserInfo() {
             if (!saleContract || !userAccount) return;
             
@@ -1756,6 +1868,8 @@
                 const myContribution = document.getElementById('myContribution');
                 const myTokens = document.getElementById('myTokens');
                 const userInfoSection = document.getElementById('userInfoSection');
+                const withdrawalInfoSection = document.getElementById('withdrawalInfoSection');
+                const tokensAvailable = document.getElementById('tokensAvailable');
                 
                 if (myContribution) {
                     myContribution.textContent = parseFloat(contribution).toFixed(4) + ' tBNB';
@@ -1764,27 +1878,36 @@
                 if (myTokens) {
                     myTokens.textContent = parseFloat(tokensPurchased).toLocaleString() + ' WETO';
                 }
+
+                if (tokensAvailable) {
+                    tokensAvailable.textContent = parseFloat(tokensPurchased).toLocaleString() + ' WETO';
+                }
                 
                 // 구매한 적이 있으면 사용자 정보 섹션 표시
-                if (parseFloat(contribution) > 0 && userInfoSection) {
-                    userInfoSection.style.display = 'block';
+                if (parseFloat(contribution) > 0) {
+                    if (userInfoSection) userInfoSection.style.display = 'block';
+                    if (withdrawalInfoSection) withdrawalInfoSection.style.display = 'block';
                 }
                 
                 // 세일 정보도 함께 로드하여 버튼 상태 업데이트
                 const saleInfo = await saleContract.getSaleInfo();
                 const hasTokens = userInfo[1].gt(0);
                 const saleEnded = !saleInfo[7] || Date.now() / 1000 > saleInfo[6].toNumber();
-                const softCapReached = saleInfo[4].gte(saleInfo[2]); // totalRaised >= softCap
                 
+                // 소프트캡 체크 제거 - 세일 종료 후 무조건 출금 가능
                 const withdrawBtn = document.getElementById('withdrawBtn');
-                const refundBtn = document.getElementById('refundBtn');
+                const saleStatus = document.getElementById('saleStatus');
                 
                 if (withdrawBtn) {
-                    withdrawBtn.disabled = !(hasTokens && saleEnded && softCapReached);
+                    withdrawBtn.disabled = !(hasTokens && saleEnded);
                 }
-                
-                if (refundBtn) {
-                    refundBtn.disabled = !(hasTokens && saleEnded && !softCapReached);
+
+                if (saleStatus) {
+                    if (saleEnded) {
+                        saleStatus.innerHTML = '<span class="status-ended">Sale Ended - Withdrawal Available</span>';
+                    } else {
+                        saleStatus.innerHTML = '<span class="status-active">Sale Active - Tokens Locked</span>';
+                    }
                 }
                 
             } catch (error) {
@@ -1864,7 +1987,7 @@
             const hero = document.querySelector('.hero');
             if (!saleInfo.saleActive) {
                 hero.style.filter = 'grayscale(50%)';
-                showToast('⚠️ 세일이 종료되었거나 비활성 상태입니다!', 'warning');
+                showToast('⚠️ 세일이 종료되었습니다. 출금 버튼을 사용해 토큰을 받으세요!', 'warning');
             }
         }
 
@@ -2188,7 +2311,7 @@
                 
                 if (receipt.status === 1) {
                     const expectedTokens = bnbAmount * WETO_CONFIG.tokenPrice;
-                    showToast(`🎉 Purchase successful! You bought ${expectedTokens.toLocaleString()} WETO tokens!`, 'success');
+                    showToast(`🎉 Purchase successful! ${expectedTokens.toLocaleString()} WETO tokens reserved. Withdraw after sale ends!`, 'success');
                     
                     // UI 업데이트
                     buyAmountInput.value = '0.1';
@@ -2231,6 +2354,60 @@
             } finally {
                 const buyBtn = document.getElementById('buyBtn');
                 setButtonLoading(buyBtn, false);
+            }
+        }
+
+        // 토큰 인출 함수 (소프트캡 체크 제거)
+        async function withdrawTokens() {
+            if (!saleContract || !userAccount) {
+                showToast('Please connect your wallet first!', 'error');
+                return;
+            }
+
+            try {
+                const withdrawBtn = document.getElementById('withdrawBtn');
+                setButtonLoading(withdrawBtn, true);
+
+                showToast('📝 Preparing withdrawal...', 'success');
+                
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const saleContractWithSigner = saleContract.connect(signer);
+                
+                const tx = await saleContractWithSigner.withdrawTokens();
+                
+                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
+                
+                const receipt = await tx.wait();
+                
+                if (receipt.status === 1) {
+                    showToast('🎉 Tokens withdrawn successfully! Check your wallet balance.', 'success');
+                    await loadUserInfo();
+                    setTimeout(() => {
+                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
+                    }, 2000);
+                } else {
+                    throw new Error('Transaction failed');
+                }
+                
+            } catch (error) {
+                console.error('Withdrawal error:', error);
+                
+                let errorMsg = 'Withdrawal failed';
+                if (error.code === 4001) {
+                    errorMsg = 'Transaction rejected by user';
+                } else if (error.message.includes('No tokens to withdraw')) {
+                    errorMsg = 'No tokens available for withdrawal';
+                } else if (error.message.includes('Sale is still active')) {
+                    errorMsg = 'Cannot withdraw while sale is active';
+                } else if (error.message) {
+                    errorMsg = error.message;
+                }
+                
+                showToast(errorMsg, 'error');
+            } finally {
+                const withdrawBtn = document.getElementById('withdrawBtn');
+                setButtonLoading(withdrawBtn, false);
             }
         }
 
@@ -2300,119 +2477,6 @@
             }).catch(() => {
                 showToast('Failed to copy address', 'error');
             });
-        }
-
-        // 토큰 인출 함수
-        async function withdrawTokens() {
-            if (!saleContract || !userAccount) {
-                showToast('Please connect your wallet first!', 'error');
-                return;
-            }
-
-            try {
-                const withdrawBtn = document.getElementById('withdrawBtn');
-                setButtonLoading(withdrawBtn, true);
-
-                showToast('📝 Preparing withdrawal...', 'success');
-                
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-                const saleContractWithSigner = saleContract.connect(signer);
-                
-                const tx = await saleContractWithSigner.withdrawTokens();
-                
-                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
-                
-                const receipt = await tx.wait();
-                
-                if (receipt.status === 1) {
-                    showToast('🎉 Tokens withdrawn successfully!', 'success');
-                    await loadUserInfo();
-                    setTimeout(() => {
-                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
-                    }, 2000);
-                } else {
-                    throw new Error('Transaction failed');
-                }
-                
-            } catch (error) {
-                console.error('Withdrawal error:', error);
-                
-                let errorMsg = 'Withdrawal failed';
-                if (error.code === 4001) {
-                    errorMsg = 'Transaction rejected by user';
-                } else if (error.message.includes('No tokens to withdraw')) {
-                    errorMsg = 'No tokens available for withdrawal';
-                } else if (error.message.includes('Sale is still active')) {
-                    errorMsg = 'Cannot withdraw while sale is active';
-                } else if (error.message.includes('Soft cap not reached')) {
-                    errorMsg = 'Cannot withdraw - soft cap not reached';
-                } else if (error.message) {
-                    errorMsg = error.message;
-                }
-                
-                showToast(errorMsg, 'error');
-            } finally {
-                const withdrawBtn = document.getElementById('withdrawBtn');
-                setButtonLoading(withdrawBtn, false);
-            }
-        }
-
-        // 환불 함수
-        async function getRefund() {
-            if (!saleContract || !userAccount) {
-                showToast('Please connect your wallet first!', 'error');
-                return;
-            }
-
-            try {
-                const refundBtn = document.getElementById('refundBtn');
-                setButtonLoading(refundBtn, true);
-
-                showToast('📝 Preparing refund...', 'success');
-                
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-                const saleContractWithSigner = saleContract.connect(signer);
-                
-                const tx = await saleContractWithSigner.getRefund();
-                
-                showToast('⏳ Transaction sent! Waiting for confirmation...', 'success');
-                
-                const receipt = await tx.wait();
-                
-                if (receipt.status === 1) {
-                    showToast('💰 Refund processed successfully!', 'success');
-                    await loadUserInfo();
-                    await updateWalletUI();
-                    setTimeout(() => {
-                        showToast(`📋 View transaction: https://testnet.bscscan.com/tx/${tx.hash}`, 'success');
-                    }, 2000);
-                } else {
-                    throw new Error('Transaction failed');
-                }
-                
-            } catch (error) {
-                console.error('Refund error:', error);
-                
-                let errorMsg = 'Refund failed';
-                if (error.code === 4001) {
-                    errorMsg = 'Transaction rejected by user';
-                } else if (error.message.includes('No contribution to refund')) {
-                    errorMsg = 'No contribution available for refund';
-                } else if (error.message.includes('Sale is still active')) {
-                    errorMsg = 'Cannot refund while sale is active';
-                } else if (error.message.includes('Soft cap was reached')) {
-                    errorMsg = 'Cannot refund - soft cap was reached';
-                } else if (error.message) {
-                    errorMsg = error.message;
-                }
-                
-                showToast(errorMsg, 'error');
-            } finally {
-                const refundBtn = document.getElementById('refundBtn');
-                setButtonLoading(refundBtn, false);
-            }
         }
 
         // Toast Notifications
@@ -2563,7 +2627,7 @@
                 if (isMobile() && !isMetaMaskMobileApp() && typeof window.ethereum === 'undefined') {
                     showToast('📱 BSC Testnet에서 테스트하려면 메타마스크 앱을 사용해주세요!', 'warning');
                 } else {
-                    showToast('🧪 WETO 테스트넷 세일에 오신 것을 환영합니다! 테스트 BNB로 구매하세요.', 'success');
+                    showToast('🧪 WETO 테스트넷 세일에 오신 것을 환영합니다! 세일 종료 후 토큰을 출금하세요.', 'success');
                 }
             }, 1000);
             
@@ -2600,7 +2664,9 @@
                         
                         // 사용자 정보 섹션 숨기기
                         const userInfoSection = document.getElementById('userInfoSection');
+                        const withdrawalInfoSection = document.getElementById('withdrawalInfoSection');
                         if (userInfoSection) userInfoSection.style.display = 'none';
+                        if (withdrawalInfoSection) withdrawalInfoSection.style.display = 'none';
                         
                         showToast('Wallet disconnected', 'error');
                     } else if (isConnected && accounts[0] !== userAccount) {
@@ -2654,9 +2720,9 @@
                 showToast('💡 팁: BSC 테스트넷 파우셋에서 테스트 BNB를 받으세요!', 'success');
             }, 5000);
             
-            // 추가 테스트 안내
+            // 출금 시스템 안내
             setTimeout(() => {
-                showToast('🔗 업데이트된 컨트랙트로 실제 테스트가 가능합니다!', 'success');
+                showToast('🔐 토큰은 세일 종료 후 출금 버튼으로 받을 수 있습니다!', 'success');
             }, 8000);
         });
 
